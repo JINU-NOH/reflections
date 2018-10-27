@@ -1,0 +1,20 @@
+What happens when you initialize a repository? Why do you need to do it?
+
+	그냥 git과 연동하고 싶은 폴더에 cd로 들어가서 git init하면 알아서 initializing 된다. 아직 commit은 한 번도 되지 않은 상태(사용자가 어떤 파일을 tracking 하고 싶은지 모르기 때문). git status로 들어가서 확인할 수 있다.
+
+How is the staging area different from the working directory and the repository?
+What value do you think it offers?
+
+How can you use the staging area to make sure you have one commit per logical
+change?
+
+What are some situations when branches would be helpful in keeping your history
+organized? How would branches help?
+
+How do the diagrams help you visualize the branch structure?
+
+What is the result of merging two branches together? Why do we represent it in
+the diagram the way we do?
+
+What are the pros and cons of Git's automatic merging vs. always doing merges
+manually?

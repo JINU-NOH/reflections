@@ -1,0 +1,34 @@
+How did viewing a diff between two versions of a file help you see the bug that
+was introduced?
+
+    서로 다른 부분, 달라진 부분만 보여줘서 비교하기 편했다.
+
+How could having easy access to the entire history of a file make you a more
+efficient programmer in the long term?
+
+    삭제했던 코드를 되살릴 때 좋을듯.
+
+What do you think are the pros and cons of manually choosing when to create a
+commit, like you do in Git, vs having versions automatically saved, like Google
+docs does?
+
+    commit 하면 논리적으로 하나의 변화가 있었을 때의 point만 설정되기 때문에 나중에 알아보기 쉽다. 
+    Google docs처럼 하면 언제 어떤 글이 적힌 파일이 있는지 알기 어렵다.
+
+Why do you think some version control systems, like Git, allow saving multiple
+files in one commit, while others, like Google Docs, treat each file separately?
+
+    서로 연관된 여러 개의 파일을 동시에 관리할 수 있기 때문에 편리하다. 예를들어 css와 html 파일은 따로 떨어져서 작동하기 어렵다. 구글독스는 뭐 문서 하나씩 따로 보관해도 되니까~
+
+How can you use the commands git log and git diff to view the history of files?
+
+    git bash를 켜고 url에서 git clone 해온 폴더에 들어간다. Command line에 git log를 입력하면 commit된 log가 출력된다. 비교하고 싶은 두 commit의 ID(랜덤 hash스타일의 긴 문자열)을 git diff fir_ID sec_ID 형식으로 입력하면 된다. 없어진 line은 빨간색으로, 새로 생긴 line은 초록색으로 표시된다. 
+
+How might using version control make you more confident to make changes that
+could break something?
+
+    버그 발생해도 이전에 commit한 곳으로 복구하면 된다 휴;
+
+Now that you have your workspace set up, what do you want to try using Git for?
+
+    안드로이드 앱을 하나 만들어보고 싶다. 처음부터 끝까지 경험해보는게 목표
