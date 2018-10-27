@@ -4,6 +4,8 @@ What happens when you initialize a repository? Why do you need to do it?
 
 How is the staging area different from the working directory and the repository?
 What value do you think it offers?
+	
+	staging area는 똑똑한 아이디어다. working directory에서 바로 repository로 commit 하게 했다면, 한 번에 여러 파일을 commit하기가 어려웠을 것. commit은 하나의 logical change가 있을 때 하는 것이니, 여러 파일을 포함하고 있을 수도. 예를 들어 html과 css처럼 찰떡이면 더더욱.
 
 How can you use the staging area to make sure you have one commit per logical
 change?
