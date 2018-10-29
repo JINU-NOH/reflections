@@ -10,13 +10,56 @@ What value do you think it offers?
 How can you use the staging area to make sure you have one commit per logical
 change?
 
+	staging area에는 한 번에 여러개의 파일을 올릴 수 있다. 작성자가 하나의 logical change가 발생했다고 판단한 시점에. 
+
+	git diff
+	: working directory랑 staging area를 비교 (내가 뭘 수정하고 있었더라)
+	
+	git diff --staged 
+	: staging area랑 가장 최근 commit을 비교(내가 제대로 된 파일을 commit 하는 게 맞나)
+
+
 What are some situations when branches would be helpful in keeping your history
 organized? How would branches help?
 
+	새로운 실험을 해보고 싶은데 버그가 있을지도 모르니 master에 하기는 좀 그렇고, 그럴 때 branch를 만들어서 관리할 수 있다.
+	git branch하면 현재 나뉜 branch의 list가 나옴. 
+	git branch [이름] 하면 [이름]으로 branch가 나뉨
+	git checkout [이름] 하면 branch를 이동함.
+
 How do the diagrams help you visualize the branch structure?
+
+	git log --graph --oneline [branch-name1] [branch-name2]
+	라는 명령어를 사용하면 두 개의 branch가 언제 분화했는지 직관적으로 볼 수 있다.
+
+	git checkout -b [branch name]
+	은 사실 명령 2개의 조합이다.
+	git branch [branch name]
+	git checkout [branch name]
+	명령 한 줄로 branch를 생성하고 옮겨갈 수 있는 것
+
+	reachability라는 개념이 있다. git log 를 이용하면 지금까지 commit 되었던 내역을, 가장 최근 commit부터 조회할 수 있다. 그 작동원리는 새로운 commit 정보에 바로 이전 commit(parent commit)의 ID가 저장되어 있기 때문. 바로 이 때, 내가 5일 전에 commit한 파일에 checkout해서 git 새로 commit을 해버리면? 그러면 branch name은 없지만 branch가 생겨버린 꼴이 된다. 그 때 새로 생긴 commit의 ID는 아무도 가지고 있지 않게 되어버리고, master branch에서 git log를 사용해도 log상에 보이지 않는다. 고립된, reachable하지 않은 commit이 생겨버린 것.  
 
 What is the result of merging two branches together? Why do we represent it in
 the diagram the way we do?
 
+	merge하고싶은 branch에 들어가서(보통 master겠지?) 
+	git merge master [branch-name] 하면 알아서 merge 된다. 만약에 branch1에 check out 한 상태에서 
+	git merge master branch2 해버리면 master랑 branch1 branch2 다 merge 되어버리니까 주의!
+
+	git merge 하다보면 commit 순서가 막 꼬인다. 위아래 붙어있는 두개의 commit이 parent 관계가 아닐 수도 있다. 그럴 땐 git show [commit ID]하면 알아서 그 parent를 찾아서 diff를 보여준다.
+
 What are the pros and cons of Git's automatic merging vs. always doing merges
 manually?
+
+	충돌이 없는 지점에서는 알아서 merge 해준다. 이는 아주 좋은 기능~ 하지만 같은 위치에 두 개의 다른 코드가 있을 경우 bash는 conflict를 출력한다. 빨리 사용자가 와서 둘 중에 더 알맞은 코드를 선택해 달라는 것. 충돌한 파일은 git에 의해 수정되어 있다.
+
+	<<<HEAD
+		[내가 작성한 코드]
+	\\\merged common ancestors
+		[공통 조상의 코드]
+	=====
+		[나와 충돌한 남의 코드]
+	>>>master
+
+	3부분으로 나뉘어 있다. 가운데의 공통 조상과 각각을 비교해보면서 어떻게 다른가 확인하고, 상의한 끝에 더 좋은 코드를 남겨놓고 지우면 된다. 파일을 저장하고 staging area에 add하면 both modified라고 뜬다. 그리고 git commit 하면 알아서 파일 수정과 merge가 하나의 commit으로 저장된다.
