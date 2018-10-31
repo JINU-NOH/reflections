@@ -1,7 +1,7 @@
 When would you want to use a remote repository rather than keeping all your work
 local?
 
-    Fill in your answer here
+    다른 사람과 같이 작업할 때, github에 자료를 올려놓고 같이 작업하면 편하다.
 
 Why might you want to always pull changes manually rather than having Git
 automatically stay up-to-date with your remote repository?
